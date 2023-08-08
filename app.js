@@ -1,5 +1,5 @@
 // A list of questions with possible answers.
-const questions = [
+let questions = [
     {
         question: "Where was Jesus born?",
         answers: [
@@ -7,7 +7,7 @@ const questions = [
             {text: "Bethlehem", correct: true},
             {text: "Nazareth", correct: false},
             {text: "Athens", correct: false}
-        ]
+        ],
     }, 
     {
         question: "What was the first miracle that Jesus perform during His ministry?",
@@ -83,6 +83,31 @@ const questions = [
     }
 ];
 
+// Verses
+let verses = [
+    "\"For God so loved the world that He sent His and only Son, that whoever believes in Him should not perish but have eternal life.\" - John 3:16",
+    "\"Share with the Lord's people who are in need. Practice hospitality.\" - Romans 12:13",
+    "\"In the same way, let your light shine before others, that they may see your good deeds and glorify your Father in heaven.\" - Matthew 5:16",
+    "\"Do not withhold good from those to whom it is due, when it is in your power to act.\" - Proverbs 3:27",
+    "\"Do nothing out of selfish ambition or vain conceit. Rather, in humility value others above yourselves, not looking to your own interests but each of you to the interests of the others.\" - Philippians 2:3-4",
+    "\"Therefore encourage one another and build each other up, just as in fact you are doing.\" - 1 Thessalonians 5:11",
+    "\"But to you who are listening I say: Love your enemies, do good to those who hate you, bless those who curse you, pray for those who mistreat you.\" - Luke 6:27-28",
+    "\"Do to others as you would have them do to you.\" - Luke 6:31",
+    "\"In everything I did, I showed you that by this kind of hard work we must help the weak, remembering the words the Lord Jesus himself said: \'It is more blessed to give than to receive.\'\" - Acts 20:35",
+    "\"Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.\" - Galatians 6:9",
+    "\"Learn to do right; seek justice. Defend the oppressed. Take up the cause of the fatherless; plead the case of the widow.\" - Isaiah 1:17",
+    "\"We love because he first loved us. Whoever claims to love God yet hates a brother or sister is a liar. For whoever does not love their brother and sister, whom they have seen, cannot love God, whom they have not seen.\" - 1 John 4:19-20",
+    "\"For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.\" - Ephesians 2:10",
+    "\"Be devoted to one another in love. Honor one another above yourselves.\" - Romans 12:10",
+    "\"For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope.\" - Jeremiah 29:11",
+    "\"Be strong and courageous. Do not fear or be in dread of them, for it is the Lord your God who goes with you. He will not leave you or forsake you.\" - Deuteronomy 31:6",
+    "\"Trust in the Lord with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths.\" - Proverbs 3:5-6",
+    "\"Oh, taste and see that the Lord is good! Blessed is the man who takes refuge in him!\" - Psalm 34:8",
+    "\"Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand.\" - Isaiah 41:10",
+    "\"Be on your guard; stand firm in the faith; be courageous; be strong. Do everything in love.\" - 1 Cor. 16:13-14",
+    "\"Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me; your rod and your staff comfort me.\ - Psalm 23:4"
+];
+
 // Get the elements for each ID of the question box, options, and next button.
 const welcomeTextElement = document.getElementById("welcome-text");
 const questionElement = document.getElementById("question-text");
@@ -93,9 +118,31 @@ const nextButton = document.getElementById("next");
 var currentQuestionIndex = 0;
 var score = 0;
 
+// Shuffle the order of the questions.
+function shuffleQuestions(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+function displayRandomVerse() {
+    const index = Math.floor(Math.random() * verses.length);
+    const verseElement = document.getElementById("verse");
+    verseElement.innerHTML = verses[index];
+}
+
 // Starts the quiz.
 function startQuiz() {
     welcomeTextElement.style.display = "block";
+    displayRandomVerse();
+    setInterval(displayRandomVerse, 10000);
+
+    // Shuffle the questions array to randomize the order.
+    questions = shuffleQuestions(questions);
+    
+    // Reset count.
     currentQuestionIndex = 0;
     score = 0;
     nextButton.innerHTML = "Next";

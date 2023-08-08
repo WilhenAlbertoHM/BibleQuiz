@@ -4,12 +4,19 @@
 body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 32%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 60%, rgba(0,212,255,1) 100%);
 }
 
 h1 {
     font-family: Verdana, Geneva, Tahoma, sans-serif
 }
+
+.verse {
+    font-style: italic;
+    padding: 1em;
+    margin: 0 1em auto;
+}
+
 .welcome-text {
     background-color: rgb(255, 255, 255);
     color: black;
@@ -53,7 +60,7 @@ h1 {
 
 .options-buttons {
     font-weight: bolder;
-    width: 90%;
+    width: 70%;
     display: block;
     padding: 1em;
     margin: 1em auto;
@@ -88,7 +95,7 @@ h1 {
 
 .next:hover {
     background-color: rgb(14, 14, 118);
-    transition: 1s;
+    transition: 0.5s;
 }
 
 .correct {
