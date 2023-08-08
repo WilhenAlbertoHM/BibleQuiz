@@ -17,6 +17,11 @@ h1 {
     margin: 0 1em auto;
 }
 
+.explanation {
+    padding: 1em;
+    margin: 0 1em auto;
+}
+
 .welcome-text {
     background-color: rgb(255, 255, 255);
     color: black;
